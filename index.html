@@ -1,0 +1,39 @@
+<!doctype html>
+<html ng-app="zombieApp" ng-controller="mainController">
+    <head>
+        <title>ZombieTweeter</title>
+        <link rel="stylesheet" type="text/css" href="./main.css" />
+        <meta charset="utf-8">
+        <script src="/node_modules/angular/angular.js"></script>
+        <script src="/node_modules/angular-resource/angular-resource.js"></script>
+        <script src="./core.js"></script>
+    </head>
+    <body>
+        <div id="interface">
+            <h1>ZombieTweeter</h1>
+            <p id="tagline">Live tweets, revived.</p>
+            <p id="note"><i>note: due to data limitations, zombietweeter can only revive tweets from the last 30 days.</i></p>
+            <label>Hashtag: #
+                <input type="text" ng-model="inputHashtag" ng-required="true" placeholder="e.g. HTGAWM">
+            </label><br/>
+            <label>Date:
+                <input type="text" ng-model="inputMonth" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="MM" size="3">/
+                <input type="text" ng-model="inputDay" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="DD" size="3">/
+                <input type="text" ng-model="inputYear" ng-required="true" ng-minlength = "4" ng-maxlength = "4" placeholder="YYYY" size="5">
+            </label><br/>
+            <label>Time:
+                <input type="text" ng-model="inputStartHr" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="hh" size="3">:
+                <input type="text" ng-model="inputStartMin" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="mm" size="3"> - 
+                <input type="text" ng-model="inputEndHr" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="hh" size="3">:
+                <input type="text" ng-model="inputEndMin" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="mm" size="3">
+                <select ng-model="selectedTime">
+                    <option ng-repeat="t in timeOptions">{{t}}</option>
+                </select>
+
+            </label><br/>
+
+            <button type="button" ng-click='testDates()'>See Tweets</button>
+            <div id="tweetList"></div>
+        </div>
+    </body>
+</html>
