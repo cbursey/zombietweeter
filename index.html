@@ -14,25 +14,18 @@
             <p id="tagline">Live tweets, revived.</p>
             <p id="note"><i>note: due to data limitations, zombietweeter can only revive tweets from the last 30 days.</i></p>
             <label>Hashtag: #
-                <input type="text" ng-model="inputHashtag" ng-required="true" placeholder="e.g. HTGAWM">
+                <input type="text" ng-model="inputHashtag" ng-required="true" placeholder="e.g. HTGAWM" ng-disabled="feedStarted">
             </label><br/>
             <label>Date:
-                <input type="text" ng-model="inputMonth" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="MM" size="3">/
-                <input type="text" ng-model="inputDay" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="DD" size="3">/
-                <input type="text" ng-model="inputYear" ng-required="true" ng-minlength = "4" ng-maxlength = "4" placeholder="YYYY" size="5">
+                <input type="date" ng-model="inputDate" ng-required="true" ng-disabled="feedStarted">
             </label><br/>
             <label>Time:
-                <input type="text" ng-model="inputStartHr" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="hh" size="3">:
-                <input type="text" ng-model="inputStartMin" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="mm" size="3"> - 
-                <input type="text" ng-model="inputEndHr" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="hh" size="3">:
-                <input type="text" ng-model="inputEndMin" ng-required="true" ng-minlength = "2" ng-maxlength = "2" placeholder="mm" size="3">
-                <select ng-model="selectedTime">
-                    <option ng-repeat="t in timeOptions">{{t}}</option>
-                </select>
-
+                <input type="time" ng-model="inputStartTime" ng-required="true" ng-disabled="feedStarted"> - 
+                <input type="time" ng-model="inputEndTime" ng-required="true" ng-disabled="feedStarted">
             </label><br/>
-
-            <button type="button" ng-click='testDates()'>See Tweets</button>
+            <button type="button" ng-click='fetchData()' ng-disabled="feedStarted">See Tweets</button>
+            <p id="err" ng-if="!feedStarted"><i>{{errorMessage}}</i><p>
+            <p id="prog" ng-if="feedStarted"><i>Displaying tweets created on {{timerDate}} at {{timerTime}}.</i><p>
             <div id="tweetList"></div>
         </div>
     </body>

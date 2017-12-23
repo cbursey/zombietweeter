@@ -25,3 +25,15 @@ h1 {
 	font-size: 15pt;
 	color: white;
 }
+
+#err {
+	justify-content: center;
+	font-size: 8pt;
+	color: red;
+}
+
+#prog {
+	justify-content: center;
+	font-size: 12pt;
+	color: white;
+}
