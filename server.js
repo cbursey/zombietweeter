@@ -29,7 +29,6 @@ app.get('/fetchEmbed:id', function (req, res) {
 
 //fetches tweets data based on parameters 
 app.post('/fetchTweets', function (req, res) {
-	console.log('fetchin');
 	var body = {};
 	if (req.body.next){
 		body = {

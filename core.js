@@ -230,6 +230,7 @@ zombieApp.controller('mainController', ['$scope', '$resource',
                         tweetTimer();
                     }
                 }, function(err){
+                	tweetTimer();
                     console.error(err);
                 });
                 return;
