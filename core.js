@@ -135,9 +135,11 @@ zombieApp.controller('mainController', ['$scope', '$resource',
                 utcSeconds = utcSeconds < 10 ? "0" + utcSeconds : utcSeconds;
 
                 var currUTC = utcHours + ":" + utcMinutes + ":" + utcSeconds;
-                if (hours > 12){
-                    hours = hours - 12;
+                if (hours === 0){
+                    hours = 12;
+                } else if (hours > 11){
                     meridian = "PM";
+                    if (hours > 12) hours -= 12;
                 }
                 $scope.timerTime = 
                     hours + ":" +
